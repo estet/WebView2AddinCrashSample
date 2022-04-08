@@ -10,21 +10,7 @@ namespace WebView2PowerPointAddInSample
             var webAppContentControl = new WebAppContentControl("", @"
 <html><head></head><body><button onclick='onClick()'>Crash me!</button><script type='text/javascript'>async function onClick() {
                 const bridge = chrome.webview.hostObjects.bridge;
-                console.log(await bridge.Func('testing...'));
-
-                // A property may be another object as long as its class also implements
-                // IDispatch.
-                // Getting a property also gets a proxy promise you must await.
-                const propValue = await bridge.AnotherObject.Prop;
-                console.log(propValue);
-
-                // Indexed properties
-                let index = 123;
-                bridge[index] = 'test';
-                let result = await bridge[index];
-                console.log(result);
                 bridge.showModalDialog();
-                window.location.replace('https://google.nl');
             }</script></body></html>");
             var myCustomTaskPane = CustomTaskPanes.Add(webAppContentControl,
                 "New Task Pane");

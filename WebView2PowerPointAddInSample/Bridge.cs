@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -41,7 +42,14 @@ namespace WebView2PowerPointAddInSample
             var webAppContentControl = new WebAppContentControl("https://avetemplafy.sharepoint.com");
             webAppContentControl.Dock = DockStyle.Fill;
             dialog.ContainerPanel.Controls.Add(webAppContentControl);
-            dialog.ShowDialog();
+            try
+            {
+                dialog.ShowDialog();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
